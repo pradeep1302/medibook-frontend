@@ -1,0 +1,36 @@
+.detail{
+    background-color: white;
+    border-radius: 40px;
+    width: 70%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: 1px solid grey;
+    padding: 20px;
+}
+
+.docDetail{
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url("../../assets/top.jpg");
+            background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center center;
+                min-height: 100vh;
+                & nav {
+                    padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+            color: #fff;
+    
+            &>.logo {
+                color: black;
+            }}
+}
+
+
+@media screen and (max-width: 850px) {
+    .detail {
+        flex-direction: column-reverse;
+    }
+}

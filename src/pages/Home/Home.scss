@@ -1,0 +1,173 @@
+.wrapper {
+  overflow-y: scroll;
+}
+.home {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("../../assets/top.jpg");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  & nav {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    color: #fff;
+
+    & > .logo {
+      color: black;
+    }
+  }
+}
+
+.home-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & li a {
+    color: #fff;
+    font-size: 20px;
+    margin: 0 5px;
+  }
+
+  & > * {
+    margin-left: 1rem;
+    color: #fff;
+  }
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.navImg {
+  width: 80px;
+}
+
+.nav-text {
+  font-family: "Bebas Neue", sans-serif;
+  color: white;
+  font-size: 40px;
+  text-shadow: 0 0 3px #000000;
+}
+
+.hero-text {
+  width: 50%;
+
+  & > * {
+    color: #9e4d9a;
+    margin-bottom: 2rem;
+  }
+
+  & > h2 span {
+    display: block;
+  }
+
+  & .hero-buttons a {
+    color: #fff;
+  }
+}
+
+.hero-image {
+  width: 50%;
+}
+
+.sec2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eaf6f6;
+}
+.divFeat {
+  width: 50%;
+  font-size: 40px;
+  margin: 0 20px;
+  font-family: "Montserrat";
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 100px 0;
+}
+@media screen and (max-width: 843px) {
+  .features {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .cont {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media screen and (max-width: 1170px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+  }
+
+  .hero-image {
+    width: 100%;
+
+    &img {
+      max-width: 100%;
+    }
+  }
+  .navImg {
+    width: 60px;
+  }
+}
+.bottom-container {
+  background-color: #eaf6f6;
+  text-align: center;
+}
+
+@media screen and (max-width: 582px) {
+  .responsive {
+    width: 100vw;
+    height: auto;
+  }
+  .features {
+    margin: 20px 0;
+  }
+  .divFeat {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 451px) {
+  .home-links {
+    & li a {
+      font-size: 15px;
+    }
+  }
+  .nav-text {
+    font-family: "Bebas Neue", sans-serif;
+    color: white;
+    font-size: 20px;
+    text-shadow: 0 0 3px #000000;
+  }
+}
+@media screen and (max-width: 356px) {
+  .navImg {
+    display: none;
+  }
+}
