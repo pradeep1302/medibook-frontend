@@ -50,7 +50,7 @@ const Register = () => {
 
     if (
       role === "doctor" &&
-      (!name || !email || !password || !password2 || !address || !bio)
+      (!name || !email || !password || !password2 || !address || !bio || !phone)
     ) {
       return toast.error("All fields are required");
     }
