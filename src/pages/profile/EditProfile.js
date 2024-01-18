@@ -28,6 +28,7 @@ const EditProfile = () => {
     address: user?.address,
     bio: user?.bio,
     role: user?.role,
+    photo: user?.photo,
   };
   const [profile, setProfile] = useState(initialState);
   const [profileImage, setProfileImage] = useState("");
@@ -44,15 +45,36 @@ const EditProfile = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const fData = new FormData();
-      fData.append("name", profile?.name);
-      fData.append("email", profile?.email);
-      fData.append("phone", profile?.phone);
-      fData.append("address", profile?.address);
-      fData.append("bio", profile?.bio);
-      if (profileImage) {
-        fData.append("image", profileImage);
+      let imageURL;
+      if (
+        profileImage &&
+        (profileImage.type === "image/jpeg" ||
+          profileImage.type === "image/jpg" ||
+          profileImage.type === "image/png")
+      ) {
+        const image = new FormData();
+        image.append("file", profileImage);
+        image.append("cloud_name", "dew41ssoz");
+        image.append("upload_preset", "tcrjxwrg");
+
+        // First save image to cloudinary
+        const response = await fetch(
+          "https://api.cloudinary.com/v1_1/dew41ssoz/image/upload",
+          { method: "post", body: image }
+        );
+        const imgData = await response.json();
+        imageURL = imgData.url.toString();
       }
+
+      // Save Profile
+      const fData = {
+        name: profile.name,
+        email: profile.email,
+        phone: profile.phone,
+        address: profile.address,
+        bio: profile.bio,
+        photo: profileImage ? imageURL : profile.photo,
+      };
 
       const data = await updateUser(fData);
       toast.success("User updated");

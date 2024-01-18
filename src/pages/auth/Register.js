@@ -24,6 +24,7 @@ const initialState = {
   date: new Date(),
   phone: "",
   bio: "",
+  photo: "",
 };
 
 const Register = () => {
@@ -31,7 +32,7 @@ const Register = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setformData] = useState(initialState);
-  const [image, setImage] = useState("");
+  const [profileImage, setprofileImage] = useState("");
   const [role, setRole] = useState("");
   const { name, email, password, phone, password2, address, date, bio } =
     formData;
@@ -42,12 +43,11 @@ const Register = () => {
   };
 
   const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
+    setprofileImage(e.target.files[0]);
   };
 
   const register = async (e) => {
     e.preventDefault();
-
     if (
       role === "doctor" &&
       (!name || !email || !password || !password2 || !address || !bio || !phone)
@@ -77,19 +77,43 @@ const Register = () => {
       return toast.error("Passwords do not match");
     }
 
-    const fData = new FormData();
-    fData.append("name", name);
-    fData.append("email", email);
-    fData.append("password", password);
-    fData.append("address", address);
-    fData.append("role", role);
-    fData.append("dob", date);
-    fData.append("bio", bio);
-    fData.append("image", image);
-    fData.append("phone", phone);
-
     setIsLoading(true);
     try {
+      // Handle Image upload
+      let imageURL;
+      if (
+        profileImage &&
+        (profileImage.type === "image/jpeg" ||
+          profileImage.type === "image/jpg" ||
+          profileImage.type === "image/png")
+      ) {
+        const image = new FormData();
+        image.append("file", profileImage);
+        image.append("cloud_name", "dew41ssoz");
+        image.append("upload_preset", "tcrjxwrg");
+
+        // First save image to cloudinary
+        const response = await fetch(
+          "https://api.cloudinary.com/v1_1/dew41ssoz/image/upload",
+          { method: "post", body: image }
+        );
+        const imgData = await response.json();
+        imageURL = imgData.url.toString();
+      }
+
+      // Save Profile
+      const fData = {
+        name,
+        email,
+        password,
+        address,
+        role,
+        dob: date,
+        phone,
+        bio,
+        photo: imageURL,
+      };
+
       const data = await registerUser(fData);
       console.log(data);
       await dispatch(SET_LOGIN(true));
