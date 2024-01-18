@@ -102,12 +102,13 @@ const Register = () => {
       }
 
       // Save Profile
+      let fullName = name;
       if (role === "doctor") {
         let prefix = "Dr.";
-        name = prefix.concat(" ", name);
+        fullName = prefix.concat(" ", name);
       }
       const fData = {
-        name,
+        name: fullName,
         email,
         password,
         address,
