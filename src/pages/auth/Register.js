@@ -82,10 +82,17 @@ const Register = () => {
     fData.append("image", image);
     fData.append("phone", phone);
 
-    console.log(fData);
+    console.log(fData.name);
+    console.log(fData.email);
+    console.log(fData.password);
+    console.log(fData.address);
+    console.log(fData.role);
+    console.log(fData.date);
+    console.log(fData.bio);
+    console.log(fData.image);
+    console.log(fData.phone);
     setIsLoading(true);
     try {
-      console.log(fData);
       const data = await registerUser(fData);
       console.log(data);
       await dispatch(SET_LOGIN(true));

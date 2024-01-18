@@ -40,7 +40,6 @@ export default function BookAppointment() {
 
   const register = async (e) => {
     e.preventDefault();
-    console.log(formData);
     if (!formData.date || !formData.doctor) {
       return toast.error("All fields are required");
     }
