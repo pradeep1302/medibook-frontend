@@ -102,6 +102,10 @@ const Register = () => {
       }
 
       // Save Profile
+      if (role === "doctor") {
+        let prefix = "Dr.";
+        name = prefix.concat(" ", name);
+      }
       const fData = {
         name,
         email,
@@ -166,14 +170,32 @@ const Register = () => {
               <label htmlFor="patient">Patient</label>
             </div>
           </div>
-          <input
-            type="text"
-            placeholder="Name"
-            required
-            name="name"
-            value={name}
-            onChange={handleInputChange}
-          />
+
+          <div style={{ display: "flex" }}>
+            {role === "doctor" && (
+              <span
+                className="input-group-text"
+                style={{
+                  fontSize: "1.6rem",
+                  height: "45px",
+                  padding: "10px",
+                  border: "0.8px solid black",
+                  margin: "10px 0px",
+                }}
+              >
+                Dr.
+              </span>
+            )}
+            <input
+              type="text"
+              placeholder="Name"
+              required
+              name="name"
+              value={name}
+              onChange={handleInputChange}
+            />
+          </div>
+
           <input
             type="email"
             placeholder="Email"
