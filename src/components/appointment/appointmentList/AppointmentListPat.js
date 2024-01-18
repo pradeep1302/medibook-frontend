@@ -93,7 +93,7 @@ export default function AppointmentList({ appointments, isLoading }) {
                       <td>{appointment.patient[0].aptNo}</td>
                       <td>{appointment.doctor.phone}</td>
                       <td>{appointment.doctor.email}</td>
-                      <td>{formatDate(appointment.date)}</td>
+                      <td>{appointment.date}</td>
                     </tr>
                   );
                 })}
