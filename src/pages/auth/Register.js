@@ -82,6 +82,7 @@ const Register = () => {
     fData.append("image", image);
     fData.append("phone", phone);
 
+    console.log(fData);
     setIsLoading(true);
     try {
       console.log(fData);
@@ -94,6 +95,7 @@ const Register = () => {
       else navigate("/patient");
       setIsLoading(false);
     } catch (error) {
+      console.log(error);
       toast.error("An error occurred");
       setIsLoading(false);
     }
