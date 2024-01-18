@@ -36,56 +36,51 @@ const Register = () => {
   const { name, email, password, phone, password2, address, date, bio } =
     formData;
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setformData({ ...formData, [name]: value });
+  };
+
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
   const register = async (e) => {
     e.preventDefault();
 
     if (
-      !formData.name ||
-      !formData.email ||
-      !formData.password ||
-      !formData.password2 ||
-      !formData.address ||
-      !formData.phone ||
-      !formData.bio
+      role === "doctor" &&
+      (!name || !email || !password || !password2 || !address || !bio)
     ) {
       return toast.error("All fields are required");
     }
     if (
-      role === "doctor" &&
-      (!formData.name ||
-        !formData.email ||
-        !formData.password ||
-        !formData.password2 ||
-        !formData.address ||
-        !formData.bio)
+      role === "patient" &&
+      (!name || !email || !password || !password2 || !address || !date)
     ) {
       return toast.error("All fields are required");
     }
 
-    if (role === "patient" && !formData.date) {
-      return toast.error("All fields are required");
-    }
-
-    if (formData.password.length < 6) {
+    if (password.length < 6) {
       return toast.error("Passwords must be up to 6 characters");
     }
-    if (!validateEmail(formData.email)) {
+    if (!validateEmail(email)) {
       return toast.error("Please enter a valid email");
     }
-    if (formData.password !== formData.password2) {
+    if (password !== password2) {
       return toast.error("Passwords do not match");
     }
 
     const fData = new FormData();
-    fData.append("name", formData.name);
-    fData.append("email", formData.email);
-    fData.append("password", formData.password);
-    fData.append("address", formData.address);
-    fData.append("role", formData.role);
-    fData.append("dob", formData.date);
-    fData.append("bio", formData.bio);
+    fData.append("name", name);
+    fData.append("email", email);
+    fData.append("password", password);
+    fData.append("address", address);
+    fData.append("role", role);
+    fData.append("dob", date);
+    fData.append("bio", bio);
     fData.append("image", image);
-    fData.append("phone", formData.phone);
+    fData.append("phone", phone);
 
     setIsLoading(true);
     try {
@@ -98,18 +93,9 @@ const Register = () => {
       else navigate("/patient");
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
       toast.error("An error occurred");
       setIsLoading(false);
     }
-  };
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setformData({ ...formData, [name]: value });
-  };
-
-  const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
   };
 
   return (
