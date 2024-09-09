@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# MediBook - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+MediBook is a MERN stack web application for managing patient appointments and medical prescriptions. This repository contains the React.js frontend, providing users with a responsive and intuitive interface for interacting with the backend services.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- *Appointment Management*: Book, view, and manage appointments with healthcare providers.
+- *Prescription Viewing*: Access medical prescriptions and details.
+- *User Profile Management*: Manage personal details and medical history.
+- *Integration with RESTful API*: Communicates with a backend API for handling data.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- *React.js*: Frontend library for building user interfaces and managing state.
+- *Axios*: For making HTTP requests to the backend API.
+- *React Router*: For managing navigation in the application.
+- *CSS/Bootstrap*: For responsive design and styling.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Clone the repository:
+  ```
+   bash
+   git clone https://github.com/pradeep1302/medibook-frontend.git
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Navigate to the project directory:
+  ```
+   bash
+   cd medibook-frontend
+   ```
 
-### `npm run build`
+3. Install dependencies:
+  ```
+   bash
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. Set up environment variables:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   - Create a .env file in the root directory and add your backend API URL:
+    ```
+     bash
+     REACT_APP_API_URL=https://medibook-app-api.onrender.com
+     ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. Run the app:
+  ```
+   bash
+   npm start
+   ```
 
-### `npm run eject`
+6. Access the application at http://localhost:3000.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Backend Server
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The backend server, which handles user authentication, appointments, and prescription data, is located in a separate repository. You can find it here: [MediBook Backend Repository](https://github.com/pradeep1302/mern-task-app-backend.git).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Make sure to clone and run the backend server following the instructions in that repository.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contributing
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions are welcome! Feel free to open issues or submit pull requests for new features or bug fixes.
